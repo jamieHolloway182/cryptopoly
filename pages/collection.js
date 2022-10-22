@@ -1,7 +1,13 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState, useRef } from "react"
+import CollectionCarousel from "../components/Collection/CollectionCarousel"
 import Web3 from 'web3'
+import styles from '../styles/collection/collection.module.css'
 
 const collection = () => {
+
+  const carouselRef = useRef();
+
+  const [toggle, updateToggle] = useState(true);
 
   async function getAccount(){
     //connect with web3
@@ -29,13 +35,25 @@ const collection = () => {
   }
 
 
-  
-  // useEffect(() => {
-  //   getAccount();
-  // }, []);
+
+  useEffect(() => {
+    //getAccount();
+      carouselRef.current.addEventListener('click', (event) => {
+        updateToggle(false)
+      })
+  }, []);
 
   return (
-    <div></div>
+    <div>
+      {toggle &&
+      <div className={styles.carouselContainer}>
+        <CollectionCarousel ref={carouselRef}></CollectionCarousel>
+      </div>}
+
+      {!toggle
+      
+      }
+    </div>
   )
 }
 
