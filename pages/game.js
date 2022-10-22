@@ -8,7 +8,7 @@ import Room from '../components/Room';
 import Web3 from 'web3'
 import BN from 'bn.js'
 
-export default function game(){
+export default function Game(){
 
   const [numPerPage, updateNumPerPage] = useState(5);
   const [pageNumberSelected, updatePageNumber] = useState(1);
