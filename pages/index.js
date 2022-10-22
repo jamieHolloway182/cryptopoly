@@ -12,26 +12,26 @@ const [rooms, setRoom] = useState([
   {
     id: nanoid,
     title: "Lowest",
-    price: "",
+    price: "0.000001",
     color: "#b9a0ee"
   },
   {
     id: nanoid,
     title: "middle low",
     color: "#abe591",
-    price: ""
+    price: "0.00001"
   },
   {
     id: nanoid,
     title: "middle high",
     color: "#ed2226",
-    price: ""
+    price: "0.0001"
   },
   {
     id: nanoid,
     title: "highest",
     color: "#8d8cdf",
-    price: "" 
+    price: "0.001" 
   }
   ]);
   
