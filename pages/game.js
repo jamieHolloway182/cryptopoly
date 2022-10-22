@@ -1,9 +1,10 @@
 import React from 'react'
+import Canvas from '../components/Game/Canvas'
 
-const game = () => {
+export default function game(){
   return (
-    <div>game</div>
+    <div>
+        <Canvas></Canvas>
+    </div>
   )
 }
-
-export default game
