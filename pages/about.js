@@ -1,7 +1,7 @@
 
 import styles from '../styles/about.module.css'
 
-const about = () => {
+const About = () => {
     return(
         <div>
             <h2 className={styles.h2}> U S </h2>
@@ -13,4 +13,4 @@ const about = () => {
     );
 };
 
-export default about;
+export default About;
