@@ -28,11 +28,11 @@ const collection = () => {
     });
   }
 
-  
 
-  useEffect(() => {
-    getAccount();
-  }, [])
+  
+  // useEffect(() => {
+  //   getAccount();
+  // }, []);
 
   return (
     <div></div>
