@@ -34,8 +34,6 @@ const collection = () => {
     });
   }
 
-
-
   useEffect(() => {
     //getAccount();
       carouselRef.current.addEventListener('click', (event) => {
@@ -46,8 +44,8 @@ const collection = () => {
   return (
     <div>
       {toggle &&
-      <div className={styles.carouselContainer}>
-        <CollectionCarousel ref={carouselRef}></CollectionCarousel>
+      <div className={styles.carouselContainer} ref={carouselRef}>
+        <CollectionCarousel></CollectionCarousel>
       </div>}
 
       {!toggle
