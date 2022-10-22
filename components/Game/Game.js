@@ -1,8 +1,8 @@
 import roomStyles from '../../styles/Layout/Room.module.css'
 
-const Game = ({id, name}) => {
+const Game = ({id, name, click}) => {
     return(
-        <div className={roomStyles.room}>         
+        <div onClick={click} className={roomStyles.room}>         
             <span>{name}</span>           
         </div>
     );
