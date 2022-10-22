@@ -1,0 +1,17 @@
+.pageNumberList{
+    display: inline-block;
+}
+
+.pageNumberList p{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pageNumberList p.active {
+    background-color: #0070f3;
+    color: white;
+  }
+  
+  .pageNumberList p:hover:not(.active) {background-color: #ddd;}

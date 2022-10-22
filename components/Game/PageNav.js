@@ -1,4 +1,4 @@
-import pageNavStyles from '../../styles/Presets/PageNav.module.css'
+import pageNavStyles from '../../styles/games/PageNav.module.css'
 import {useState} from 'react'
 
 const PageNav = ({length, onChange, selected}) => {
