@@ -32,7 +32,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color:  rgb(122, 10, 14);
   text-decoration: none;
 }
 
@@ -92,7 +92,7 @@
 .card:focus,
 .card:active {
   color:  rgb(122, 10, 14);
-  border-color: #0070f3;
+  border-color:  rgb(122, 10, 14);
 }
 
 .card h2 {
