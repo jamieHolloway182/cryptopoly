@@ -16,7 +16,7 @@ const Canvas = () => {
         const ctx = canvas.getContext('2d');
     
         //draw background
-        ctx.strokeStyle = '#000000';
+        ctx.strokeStyle = '#ff000080';
         ctx.strokeRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     }, [])
 
