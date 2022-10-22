@@ -24,7 +24,8 @@ const Canvas = () => {
     useEffect(() => {
 
     })
-
+    
+    //append all teh rooms
     return (
         <div>
             <canvas ref={canvasRef} className={styles.canvas}></canvas>
