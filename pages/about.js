@@ -1,4 +1,3 @@
-
 import styles from '../styles/about.module.css'
 
 const About = () => {
