@@ -10,7 +10,8 @@
     margin-bottom: 10px;
     }
   
-  .room-colelction{
-    display: grid;
-  
-  }
+.room-colelction{
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 250px);
+}
