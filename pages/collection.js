@@ -3,7 +3,7 @@ import CollectionCarousel from "../components/Collection/CollectionCarousel"
 import Web3 from 'web3'
 import styles from '../styles/collection/collection.module.css'
 
-const collection = () => {
+const Collection = () => {
 
   const carouselRef = useRef();
 
@@ -55,4 +55,4 @@ const collection = () => {
   )
 }
 
-export default collection
+export default Collection
