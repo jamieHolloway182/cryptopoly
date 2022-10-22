@@ -1,17 +1,22 @@
 
 .room{
-    background-color: rgb(46, 206, 206);
-    border-radius: 5px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 150px;
-    margin-bottom: 10px;
-    }
+  background-color: rgb(122, 10, 14);
+  font-size: large;
+  font-weight: 200;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 150px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 5px;
+  font-family: "Times New Roman", Times, serif;
+  }
   
-.room-colelction{
+.room-collection{
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(4, 250px);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
