@@ -1,11 +1,11 @@
 import React from 'react'
 import Canvas from './Canvas'
-import { useEffect, useRef } from 'react'
+import styles from '../../styles/Layout/Room.module.css'
 
 const CanvasContainer = ({finish}) => {
 
   return (
-    <div>
+    <div className={styles.roomcollection}>
         <Canvas finish={finish}></Canvas>
     </div>
   )

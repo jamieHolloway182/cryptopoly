@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect, useState } from 'react'
-import canvasStyles from '../../styles/canvas/Canvas.module.css'
+import styles from '../../styles/canvas/Canvas.module.css'
 
 const Canvas = ({finish}) => {
   
@@ -10,7 +10,7 @@ const Canvas = ({finish}) => {
   const [clickedAlive, changeClicked] = useState(true);
   
   const [displayDimensions, updateDisplay] = useState([9, 6]);
-  const [cellSize, updateSize] = useState(50);
+  const [cellSize, updateSize] = useState(90);
 
   const [turn, changeTurn] = useState(false)
   
@@ -31,6 +31,7 @@ const Canvas = ({finish}) => {
     }
     
     const [board, updateBoard] = useState(createBoard())
+
   const draw = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
@@ -123,9 +124,8 @@ function chkWinner(bd) {
     }
 
   return (
-      <div className = {canvasStyles.canvasContainer}>
-          <canvas onMouseDown={getCursorPosition} className = {canvasStyles.canvas} ref={canvasRef} width={displayDimensions[0] * cellSize} height={displayDimensions[1] * cellSize} ></canvas>
-          
+      <div className = {styles.canvasContainer}>
+          <canvas onMouseDown={getCursorPosition} ref={canvasRef} width={displayDimensions[0] * cellSize} height={displayDimensions[1] * cellSize} ></canvas>
       </div>
   )
 }

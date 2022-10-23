@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { nanoid } from "nanoid"
 import PageNav from '../components/Game/PageNav';
 import GameList from '../components/Game/GameList';
-import RoomsList from '../components/RoomsList';
+import RoomList from '../components/RoomsList';
 import Web3 from 'web3'
 import BN from 'bn.js'
 import styles from '../styles/games/game.module.css'
@@ -28,25 +28,25 @@ export default function Game(){
   const [rooms, setRoom] = useState([
   {
     id: nanoid(),
-    title: "Lowest",
+    title: "Bronze Room",
     price: "0.002",
     color: "#b9a0ee"
   },
   {
     id: nanoid(),
-    title: "middle low",
+    title: "Silver Room",
     color: "#abe591",
     price: "0.003"
   },
   {
     id: nanoid(),
-    title: "middle high",
+    title: "Gold Room",
     color: "#ed2226",
     price: "0.004"
   },
   {
     id: nanoid(),
-    title: "highest",
+    title: "Diamond Room",
     color: "#8d8cdf",
     price: "0.005" 
   }
@@ -181,11 +181,11 @@ export default function Game(){
           <input type="textarea" id="searchBox" className={styles.searchBar} placeholder = "Search for game..."/>
       </form>}
       {gameListOpen && <GameList click={clickGameList} games={games} pageNum={pageNumberSelected} />}
-      <div className={styles.roomContainer}>
-        {bettingListOpen && <RoomsList click = {clickBettingList} room={rooms}/>}
+      {bettingListOpen && <RoomList click = {clickBettingList} rooms={rooms}/>}
+      <div className={styles.connectionContainer}>
+        {gameOpen && !gameReady && <div ref={playerOneRef}>Player One Connecting...</div>}
+        {gameOpen && !gameReady && <div ref={playerTwoRef}>Player Two Connecting...</div>}
       </div>
-      {gameOpen && <div ref={playerOneRef}>Player One Connecting...</div>}
-      {gameOpen && <div ref={playerTwoRef}>Player Two Connecting...</div>}
       {gameReady && <CanvasContainer finish={endGame}></CanvasContainer>}
       {gameFinished && <GameFinishScreen winner={winner} amount={weiToMatic()} onMoney={endGameWithMoney} onCollect={endGameWithCollectible}></GameFinishScreen>}
     </div>

@@ -23,3 +23,10 @@
     background-color: aquamarine;
     color: red;
 }
+
+.connectionContainer{
+    padding: 50px;
+    text-align: center;
+    text-shadow: 5px;
+    font-family: "Times New Roman", Times, serif;
+}
