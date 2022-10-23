@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { nanoid } from "nanoid"
 import PageNav from '../components/Game/PageNav';
 import GameList from '../components/Game/GameList';
-import Room from '../components/Room';
+import RoomsList from '../components/RoomsList';
 import Web3 from 'web3'
 import BN from 'bn.js'
 import styles from '../styles/games/game.module.css'
@@ -165,12 +165,7 @@ export default function Game(){
       </form>}
       {gameListOpen && <GameList click={clickGameList} games={games} pageNum={pageNumberSelected} />}
       <div className={styles.roomContainer}>
-        {bettingListOpen && rooms.map((room) => (
-          <Room key={room.id} 
-          title={room.title} 
-          price={room.price}
-          color={room.color}
-          click ={clickBettingList}/>))}
+        {bettingListOpen && <RoomsList click = {clickBettingList} room={rooms}/>}
       </div>
       {gameOpen && <div ref={resultRef}></div>}
       {gameOpen && <div ref={playerOneRef}>Player One Connecting...</div>}
