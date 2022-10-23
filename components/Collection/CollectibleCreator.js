@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import Web3 from 'web3'
 import style from '../../styles/Home.module.css'
+import Image from 'next/image'
 
 const CollectibleCreator = () => {
+
+    const nameRef = useRef()
 
     const getContract = async () => {
         //connect with web3
@@ -16,7 +19,7 @@ const CollectibleCreator = () => {
         var contractAddress = "0xc6B48EE98cea7E33DdEC113AE546cc68cB53Ca0F"
         let CollectibleFactoryContract = await new web3.eth.Contract(abi, contractAddress);
         
-        let create = await CollectibleFactoryContract.methods.getCollectiblesByOwner(account);
+        let create = await CollectibleFactoryContract.methods.createRandomCollectible(nameRef.current.value);
         let gas = await create.estimateGas();
         
         let transaction = create.send({
@@ -38,13 +41,11 @@ const CollectibleCreator = () => {
     
 
     return (
-        <div>
-            <textarea placeholder={"Type in your name..."} className={style.textArea}></textarea>
+        <div className={style.collectibleContainer}>
+            <textarea placeholder={"Type in your name..."} className={style.textArea} ref={nameRef}></textarea>
             <button onClick={getContract} className={style.button}>Generate Unique Collectable</button>
-            <div>
-                <span className={style.title}>You've won a: </span>
-                <div >Prize</div>
-            </div>
+            <span className={style.title}>You've won a: </span>
+            <Image src='/../public/ludo.jpg' layout={'fill'}></Image>
         </div>
     )
 }
