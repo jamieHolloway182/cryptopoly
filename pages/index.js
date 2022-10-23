@@ -1,15 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import Web3 from 'web3';
+import { useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
-import { useState } from "react";
-import {nanoid} from "nanoid";
-import Room from "../components/Room"
-import CanvasContainer from '../components/Game/CanvasContainer';
 
 export default function Home() {
 
     const connectRef = useRef();
+    const [accounts, setAccounts] = useState([])
+    const [disbaled, setDisabled] = useState(false)
 
     useEffect(() => {
       connectRef.current.addEventListener('click', () => {
@@ -17,13 +14,23 @@ export default function Home() {
         ethereum.request({ method: 'eth_requestAccounts' });
         handleDisablingConnect();
       });
-      handleDisablingConnect();
+      if(!disbaled){
+        handleDisablingConnect();
+      }
     })
 
-    const handleDisablingConnect = () => {
-      if (typeof window.ethereum !== 'undefined'){
-        console.log("h")
-        connectRef.current.disabled = true;
+    const handleDisablingConnect = async () => {
+      await window.ethereum.sendAsync({data:'eth_requestAccounts'})
+      window.web3 = new Web3(window.ethereum);
+      //get account
+      const accounts = await web3.eth.getAccounts().then(checkAccountsLength());
+      setAccounts(accounts)
+    }
+
+    const checkAccountsLength = () => {  
+      if (accounts.length > 0){
+        setDisabled(true)
+        connectRef.current.disbaled = true;
       }
     }
   
@@ -31,6 +38,7 @@ export default function Home() {
     <div>
       <div className={styles.description}>BOARD GAMES LIKE YOU'VE NEVER SEEN BEFORE </div>
       <button className={styles.button} ref={connectRef}>Connect to MetaMask</button>
+      {disbaled && <div>Already Connected</div>}
     </div>
   )
 }
