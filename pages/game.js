@@ -1,5 +1,5 @@
-import React from 'react';
-import Canvas from '../components/Game/Canvas';
+import React, { useEffect } from 'react';
+import CanvasContainer from '../components/Game/CanvasContainer';
 import { useState, useRef } from "react";
 import { nanoid } from "nanoid"
 import PageNav from '../components/Game/PageNav';
@@ -68,7 +68,7 @@ export default function Game(){
   const resultRef = useRef();
   const playerOneRef = useRef();
   const playerTwoRef = useRef();
-  const canvasRef = useRef();
+  const canvasRef = useRef(null);
 
   const [amount, setAmount] = useState(null);
   const [house, setHouse] = useState("0xC1c7f885AfA416e1351830E86A96AB36C83edf5D");
@@ -155,7 +155,7 @@ export default function Game(){
       {gameOpen && <div ref={resultRef}></div>}
       {gameOpen && <div ref={playerOneRef}>Player One Connecting...</div>}
       {gameOpen && <div ref={playerTwoRef}>Player Two Connecting...</div>}
-      {gameOpen && <Canvas ref={canvasRef}></Canvas>}
+      {gameOpen && <CanvasContainer ></CanvasContainer>}
     </div>
   )
 }

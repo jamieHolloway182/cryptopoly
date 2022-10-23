@@ -1,36 +1,44 @@
-import React, { useEffect, useRef } from 'react'
-import styles from '../../styles/canvas/Canvas.module.css'
+import { useState } from 'react'
+import React, { useRef, useEffect } from 'react'
+import canvasStyles from '../../styles/canvas/Canvas.module.css'
 
 const Canvas = () => {
+  
+  const canvasRef = useRef(null);
+  const [mouse, updateMouse] = useState(false);
+  const [lastCoords, updateLastCoords] = useState([-1,-1])
+  const [clickedAlive, changeClicked] = useState(true);
 
-    //reference for getting canvas
-    const canvasRef = useRef();
+  const [displayDimensions, updateDisplay] = useState([9, 9]);
+  const [cellSize, updateSize] = useState(50);
+  
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
 
-    //runs only once, on page loading
-    useEffect(() => {
-        canvasRef.current.width = window.innerWidth - 20;
-        canvasRef.current.height = window.innerHeight - 100;
-        
-        //gets canvas
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-    
-        //draw background
-        ctx.strokeStyle = '#ff000080';
-        ctx.strokeRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    }, [])
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    //game run function, runs every frame and updates canvas
-    useEffect(() => {
+    ctx.strokeStyle = 'grey';
+    ctx.beginPath();
+    for (let i = 0; i < ctx.canvas.height / cellSize ; i ++){
+      ctx.moveTo(0, i * cellSize);
+      ctx.lineTo(ctx.canvas.width, i * cellSize);
+    }
+    for (let i = 0; i < ctx.canvas.width / cellSize ; i ++){
+        ctx.moveTo(i * cellSize, 0);
+        ctx.lineTo(i* cellSize, ctx.canvas.height);
+    }
+    ctx.stroke();
+  })
 
-    })
-    
-    //append all teh rooms
-    return (
-        <div>
-            <canvas ref={canvasRef} className={styles.canvas}></canvas>
-        </div>
-    )
+
+  return (
+      <div className = {canvasStyles.canvasContainer}>
+          <canvas className = {canvasStyles.canvas} ref={canvasRef} width={displayDimensions[0] * cellSize} height={displayDimensions[1] * cellSize} ></canvas>
+          
+      </div>
+  )
 }
 
 export default Canvas
