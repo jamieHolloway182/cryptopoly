@@ -48,6 +48,7 @@
 .title,
 .description {
   text-align: center;
+  font-family: "Courier New", Monospace;
 }
 
 .description {
@@ -128,18 +129,25 @@
   }
 
   .button{
-    background-color: #03A9F4;
-    border: none;
+    background-color: white;
+    color: black;
+    font-weight: bold;
     padding: 15px 25px;
     text-transform: uppercase;
-    color: white;
-    font-weight: 700;
     border-radius: 3px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #03A9F4;
+    margin: 30px;
   }
   
-  .button :hover{
-    background-color: #0074a9;
-    outline: none;
+  .button:hover{
+    background-color: #03A9F4;
+    color: white;
   }
-  
+  .button:disabled{
+    background-color: grey;
+    color: white;
+  }
+
 }

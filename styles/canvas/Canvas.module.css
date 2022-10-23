@@ -1,3 +1,10 @@
 .canvas {
     border: black solid;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.canvasContainer {
+    align-items: center;
+    justify-content: space-around;
 }
