@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import Web3 from 'web3'
 import style from '../../styles/Home.module.css'
 import Image from 'next/image'
@@ -6,6 +6,8 @@ import Image from 'next/image'
 const CollectibleCreator = () => {
 
     const nameRef = useRef()
+    const buttonRef = useRef()
+    const [imageGenerated, updateImage] = useState(false)
 
     const getContract = async () => {
         //connect with web3
@@ -30,7 +32,11 @@ const CollectibleCreator = () => {
         let e = CollectibleFactoryContract.events.GetCollectible().on('data', function(event){
             console.log("Returned: " + event.returnValues)
         })
-        
+    }
+
+    const generateImage = () => {
+        updateImage(true);
+        buttonRef.current.disabled = true;
     }
 
     const generateCollectible = (id, name, dna) => {
@@ -43,9 +49,9 @@ const CollectibleCreator = () => {
     return (
         <div className={style.collectibleContainer}>
             <textarea placeholder={"Type in your name..."} className={style.textArea} ref={nameRef}></textarea>
-            <button onClick={getContract} className={style.button}>Generate Unique Collectable</button>
-            <span className={style.title}>You've won a: </span>
-            <Image src='/../public/ludo.jpg' layout={'fill'}></Image>
+            <button onClick={generateImage} className={style.button} ref={buttonRef}>Generate Unique Collectable</button>
+            <span className={style.title}>You've won a... </span>
+            {imageGenerated && <Image src='/../public/ludo.jpg' width={"100%"} height={"250%"}></Image>}
         </div>
     )
 }

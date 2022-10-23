@@ -9,6 +9,7 @@ import Web3 from 'web3'
 import BN from 'bn.js'
 import styles from '../styles/games/game.module.css'
 import GameFinishScreen from '../components/Game/GameFinishScreen';
+import CollectibleCreator from '../components/Collection/CollectibleCreator';
 
 export default function Game(){
 
@@ -19,7 +20,8 @@ export default function Game(){
   const [gameOpen, toggleGame] = useState(false);
   const [gameReady, toggleReady] = useState(false);
   const [gameFinished, toggleFinish] = useState(false);
-  const [winner, updateWinner] = useState(-1)
+  const [winner, updateWinner] = useState(-1);
+  const [collectibleOpen, toggleCollectible] = useState(false)
 
   useEffect(() => {
     console.log("tri")
@@ -155,7 +157,8 @@ export default function Game(){
   }
 
   const endGameWithCollectible = () =>{
-
+    toggleFinish(false);
+    toggleCollectible(true);
   }
 
   const clickGameList = () => {
@@ -188,6 +191,7 @@ export default function Game(){
       </div>
       {gameReady && <CanvasContainer finish={endGame}></CanvasContainer>}
       {gameFinished && <GameFinishScreen winner={winner} amount={weiToMatic()} onMoney={endGameWithMoney} onCollect={endGameWithCollectible}></GameFinishScreen>}
+      {collectibleOpen && <CollectibleCreator></CollectibleCreator>}
     </div>
   )
 }
