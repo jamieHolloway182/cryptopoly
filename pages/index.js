@@ -29,7 +29,7 @@ export default function Home() {
   
   return (
     <div>
-      <div className={styles.description}>BOARD GAMES LIKE YOU'VE NEVER SEEN BEFORE (:</div>
+      <div className={styles.description}>BOARD GAMES LIKE YOU'VE NEVER SEEN BEFORE </div>
       <button className={styles.button} ref={connectRef}>Connect to MetaMask</button>
     </div>
   )
