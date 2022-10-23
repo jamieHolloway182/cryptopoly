@@ -1,5 +1,16 @@
 .container {
-  padding: 0 2rem;
+  display: grid;
+}
+
+.finalMessage{
+  margin: 20px;
+  padding: 3px;
+  background-color: #14a783;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .main {
