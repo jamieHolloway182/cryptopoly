@@ -19,7 +19,7 @@ export default function Home() {
   
   return (
     <div>
-      <button ref={connectRef}>Connect to MetaMask</button>
+      <button className={styles.button} ref={connectRef}>Connect to MetaMask</button>
     </div>
   )
 }
