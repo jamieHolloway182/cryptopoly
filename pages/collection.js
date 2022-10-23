@@ -18,8 +18,8 @@ const Collection = () => {
     const accounts = await web3.eth.getAccounts();
     const account = accounts[0];
     //get contract
-    let abi = [{"inputs":[],"name":"count","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"increment","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"}];
-    let address = "0x8bBd55747b339929f9245f1303b9D2c9F5246350";
+    let abi = [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256[]","name":"collectibles","type":"uint256[]"}],"name":"GetCollectibles","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"collectibleId","type":"uint256"},{"indexed":false,"internalType":"string","name":"name","type":"string"},{"indexed":false,"internalType":"uint256","name":"dna","type":"uint256"}],"name":"NewCollectible","type":"event"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"collectibleToOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"collectibles","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"uint256","name":"dna","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"string","name":"_name","type":"string"}],"name":"createRandomCollectible","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"getCollectiblesByOwner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+    let address = "0xA7176f600D9C7FCD378aa37508F90F5d87cb6Dc8";
     let contract = await new web3.eth.Contract(abi, address);
 
     let inc = await contract.methods.increment();
