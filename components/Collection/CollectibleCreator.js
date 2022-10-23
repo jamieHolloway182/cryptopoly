@@ -37,17 +37,10 @@ const CollectibleCreator = () => {
         buttonRef.current.disabled = true;
     }
 
-    const generateCollectible = (id, name, dna) => {
-        console.log("Event recognised")
-        let dnaStr = String(dna);
-    }
-
-    
-
     return (
         <div className={style.collectibleContainer}>
             <textarea placeholder={"Type in your name..."} className={style.textArea} ref={nameRef}></textarea>
-            <button onClick={createCollectible} className={style.button} ref={buttonRef}>Generate Unique Collectable</button>
+            <button onClick={generateImage} className={style.button} ref={buttonRef}>Generate Unique Collectable</button>
             <span className={style.title}>You've won a... </span>
             {imageGenerated && <Image src='/../public/ludo.jpg' width={"100%"} height={"250%"}></Image>}
         </div>

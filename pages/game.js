@@ -130,7 +130,6 @@ export default function Game(){
       to: house,
       value: amount
     }).then(() => {
-      playerTwoRef.current.innerHTML = "Player Two Connected!";
       toggleReady(true)
     });
     setAmount(amount)
