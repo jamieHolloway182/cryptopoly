@@ -11,7 +11,7 @@ import styles from '../styles/games/game.module.css'
 
 export default function Game(){
 
-  const [numPerPage, updateNumPerPage] = useState(6);
+  const [numPerPage, updateNumPerPage] = useState(8);
   const [pageNumberSelected, updatePageNumber] = useState(1);
   const [gameListOpen, toggleGameList] = useState(true);
   const [bettingListOpen, toggleBettingList] = useState(false);
@@ -50,28 +50,36 @@ export default function Game(){
   
   const [games, filterList] = useState([{
     id: nanoid(),
-    name: "Connect 4"
+    name: "Connect 4",
+    image: "/../public/monopoly.jpg"
   }, {
     id: nanoid(),
-    name: "Ludo"
+    name: "Ludo",
+    image: "/../public/ludo.jpg"
   },{
     id: nanoid(),
-    name: "Monopoly"
+    name: "Monopoly",
+    image: "/../public/monopoly.jpg"
   },{
     id: nanoid(),
-    name: "Scrabble"
+    name: "Scrabble",
+    image: "/../public/scrabble.jpg"
   },{
     id: nanoid(),
-    name: "Snakes and Ladders"
+    name: "Snakes and Ladders",
+    image: "/../public/snakes.jpg"
   },{
     id: nanoid(),
-    name: "Chess"
+    name: "Chess",
+    image: "/../public/chess.jpg"
   },{
     id: nanoid(),
-    name: "Uno"
+    name: "Uno",
+    image: "/../public/uno.png"
   },{
     id: nanoid(),
-    name: "Black Jack"
+    name: "Black Jack",
+    image: "/../public/blackjack.jpg"
   }])
 
   const [constGames, neverUse] = useState(games);
@@ -152,8 +160,8 @@ export default function Game(){
   return (
     <div className={styles.gameContainer}>
       {gameListOpen &&<PageNav length={Math.ceil(games.length / numPerPage)} onChange={switchPage} selected ={pageNumberSelected}/>}
-      {gameListOpen && <form onInput={handleInput}>
-          <input type="textarea" id="searchBox" style = {{margin:'5px'}} placeholder = "Search for preset..."/>
+      {gameListOpen && <form  onInput={handleInput}>
+          <input type="textarea" id="searchBox" className={styles.searchBar} placeholder = "Search for game..."/>
       </form>}
       {gameListOpen && <GameList click={clickGameList} games={games} pageNum={pageNumberSelected} />}
       {bettingListOpen && rooms.map((room) => (

@@ -40,11 +40,11 @@ const Canvas = ({finish}) => {
 
     ctx.strokeStyle = 'grey';
     ctx.beginPath();
-    for (let i = 0; i < ctx.canvas.height / cellSize ; i ++){
+    for (let i = 0; i < ctx.canvas.height / cellSize +1; i ++){
       ctx.moveTo(0, i * cellSize);
       ctx.lineTo(ctx.canvas.width, i * cellSize);
     }
-    for (let i = 0; i < ctx.canvas.width / cellSize ; i ++){
+    for (let i = 0; i < ctx.canvas.width / cellSize +1 ; i ++){
         ctx.moveTo(i * cellSize, 0);
         ctx.lineTo(i* cellSize, ctx.canvas.height);
     }

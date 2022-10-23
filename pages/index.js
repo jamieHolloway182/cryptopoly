@@ -15,11 +15,21 @@ export default function Home() {
       connectRef.current.addEventListener('click', () => {
         //Will Start the metamask extension
         ethereum.request({ method: 'eth_requestAccounts' });
+        handleDisablingConnect();
       });
+      handleDisablingConnect();
     })
+
+    const handleDisablingConnect = () => {
+      if (typeof window.ethereum !== 'undefined'){
+        console.log("h")
+        connectRef.current.disabled = true;
+      }
+    }
   
   return (
     <div>
+      <div className={styles.description}>BOARD GAMES LIKE YOU'VE NEVER SEEN BEFORE </div>
       <button className={styles.button} ref={connectRef}>Connect to MetaMask</button>
     </div>
   )
