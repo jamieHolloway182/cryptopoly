@@ -24,7 +24,7 @@
 }
 
 .title a {
-  color:  rgb(122, 10, 14);
+  color:  rgb(150, 22, 27);
   text-decoration: none;
 }
 
@@ -84,8 +84,8 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color:  rgb(122, 10, 14);
-  border-color:  rgb(122, 10, 14);
+  color:  rgb(150, 22, 27);
+  border-color:  rgb(150, 22, 27);
 }
 
 .card h2 {
@@ -131,12 +131,12 @@
   border-radius: 3px;
   transition-duration: 0.4s;
   cursor: pointer;
-  border: 2px solid #03A9F4;
+  border: 2px solid rgb(150, 22, 27);
   margin: 30px;
 }
 
 .button:hover{
-  background-color: #03A9F4;
+  background-color: rgb(150, 22, 27);
   color: white;
 }
 .button:disabled{

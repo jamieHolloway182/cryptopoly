@@ -20,8 +20,8 @@
 }
 
 .pagesNav{
-    background-color: aquamarine;
-    color: red;
+    background-color: rgb(150, 22, 27);
+    color: white;
 }
 
 .connectionContainer{
@@ -35,5 +35,5 @@
     font-weight: bold;
     font-size: 17px;
     font-family: "Times New Roman", Times, serif;
-    border: 3px solid #106389;
+    border: px solid #106389;
 }
