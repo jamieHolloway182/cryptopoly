@@ -10,7 +10,7 @@
 }
 
 .pageNumberList p.active {
-    background-color: #03A9F4;
+    background-color: rgb(150, 22, 27);
     color: white;
   }
   
