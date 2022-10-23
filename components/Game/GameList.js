@@ -2,7 +2,6 @@ import Game from './Game'
 import style from '../../styles/Layout/Room.module.css'
 
 const GameList = ({games, pageNum, click}) => {
-
     return (
         <div className={style.roomcollection}>
             {games.length > 0 ? 
