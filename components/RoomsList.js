@@ -1,12 +1,16 @@
 import Room from './Room';
 import style from '../styles/Layout/Room.module.css'
+import { useEffect } from 'react';
 
-const GameList = ({click, rooms}) => {
+const RoomList = ({click, rooms}) => {
+    useEffect(() => {
+        console.log(rooms)
+    })
     return (
-        <div className={style.roomcollection}>
-                <Room  title={rooms.title} price={rooms.price} color={rooms.color} click={click}/>
+        <div  className={style.roomcollection}>
+            {rooms.map((room) => <Room title={room.title} price={room.price} color={room.color} click={click}/>)}
         </div>
     )
 }
 
-export default GameList
+export default RoomList
