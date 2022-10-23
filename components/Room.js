@@ -1,8 +1,8 @@
-import roomStyles from '../styles/Layout/Room.module.css'
+import roomStyles from '../styles/Layout/BettingRoom.module.css'
 
 const Room = ({title, price, color, click}) => {
     return(
-        <div onClick={click.bind(this, price)} className={roomStyles.room} style={{ backgorundcolor: {color} }}>   
+        <div onClick={click.bind(this, price)} className={roomStyles.bettingRoom} style={{ backgorund: {color} }}>   
             <span>{title}</span>
             <div>Amount betting: {price}</div>                    
         </div>

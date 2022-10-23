@@ -51,7 +51,7 @@ export default function Game(){
   const [games, filterList] = useState([{
     id: nanoid(),
     name: "Connect 4",
-    image: "/../public/monopoly.jpg"
+    image: "/../public/connect4.jpg"
   }, {
     id: nanoid(),
     name: "Ludo",
@@ -164,12 +164,14 @@ export default function Game(){
           <input type="textarea" id="searchBox" className={styles.searchBar} placeholder = "Search for game..."/>
       </form>}
       {gameListOpen && <GameList click={clickGameList} games={games} pageNum={pageNumberSelected} />}
-      {bettingListOpen && rooms.map((room) => (
+      <div className={styles.roomContainer}>
+        {bettingListOpen && rooms.map((room) => (
           <Room key={room.id} 
-              title={room.title} 
-              price={room.price}
-              color={room.color}
-              click ={clickBettingList}/>))}
+          title={room.title} 
+          price={room.price}
+          color={room.color}
+          click ={clickBettingList}/>))}
+      </div>
       {gameOpen && <div ref={resultRef}></div>}
       {gameOpen && <div ref={playerOneRef}>Player One Connecting...</div>}
       {gameOpen && <div ref={playerTwoRef}>Player Two Connecting...</div>}

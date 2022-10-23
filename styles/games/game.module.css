@@ -3,6 +3,11 @@
 
 }
 
+.roomContainer{
+    align-content: center;
+    align-items: center;
+}
+
 .searchBar{
     width: 35%;
     background-color: rgb(237, 237, 237);
