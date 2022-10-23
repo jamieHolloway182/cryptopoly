@@ -2,11 +2,11 @@ import React from 'react'
 import Canvas from './Canvas'
 import { useEffect, useRef } from 'react'
 
-const CanvasContainer = () => {
+const CanvasContainer = ({finish}) => {
 
   return (
     <div>
-        <Canvas></Canvas>
+        <Canvas finish={finish}></Canvas>
     </div>
   )
 }

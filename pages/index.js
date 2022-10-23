@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import { useState } from "react";
 import {nanoid} from "nanoid";
 import Room from "../components/Room"
+import CanvasContainer from '../components/Game/CanvasContainer';
 
 export default function Home() {
 
