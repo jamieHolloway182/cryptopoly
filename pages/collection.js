@@ -17,45 +17,38 @@ const Collection = () => {
     //get account
     const accounts = await web3.eth.getAccounts();
     const account = accounts[0];
-    //get contract
-    let abi = [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256[]","name":"collectibles","type":"uint256[]"}],"name":"GetCollectibles","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"collectibleId","type":"uint256"},{"indexed":false,"internalType":"string","name":"name","type":"string"},{"indexed":false,"internalType":"uint256","name":"dna","type":"uint256"}],"name":"NewCollectible","type":"event"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"collectibleToOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"collectibles","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"uint256","name":"dna","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"string","name":"_name","type":"string"}],"name":"createRandomCollectible","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"getCollectiblesByOwner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
-    let address = "0xA7176f600D9C7FCD378aa37508F90F5d87cb6Dc8";
-    let contract = await new web3.eth.Contract(abi, address);
 
-    let inc = await contract.methods.increment();
-    let gas = await inc.estimateGas();
-    console.log(gas)
-    let count = await inc.call();
-    console.log("Count:" + count);
-    console.log(contract)
-
-    let transaction = await contract.methods.increment().send({
-      from: account,
-      gas: gas
-    });
+    var abi = [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256[]","name":"collectibles","type":"uint256[]"}],"name":"GetCollectibles","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"collectibleId","type":"uint256"},{"indexed":false,"internalType":"string","name":"name","type":"string"},{"indexed":false,"internalType":"uint256","name":"dna","type":"uint256"}],"name":"NewCollectible","type":"event"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"collectibleToOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"collectibles","outputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"uint256","name":"dna","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"string","name":"_name","type":"string"}],"name":"createRandomCollectible","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"getCollectiblesByOwner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+    var contractAddress = "0xA7176f600D9C7FCD378aa37508F90F5d87cb6Dc8"
+    let CollectibleFactoryContract = await new web3.eth.Contract(abi, contractAddress);
+    
+    let create = await CollectibleFactoryContract.methods.getCollectiblesByOwner();
+    let gas = await create.estimateGas();
+    
+    let transaction = create.send({
+        from: account,
+        gas: gas * 2
+    })
   }
 
-  // useEffect(() => {
-  //   //getAccount();
-  //     carouselRef.current.addEventListener('click', (event) => {
-  //       updateToggle(false)
-  //     })
-  // }, []);
+  useEffect(() => {
+    getAccount();
+      carouselRef.current.addEventListener('click', (event) => {
+        updateToggle(false)
+      })
+  }, []);
 
   return (
     <div>
-      <CollectibleCreator></CollectibleCreator>
-    </div>
-    // <div>
-    //   {toggle &&
-    //   <div className={styles.carouselContainer} ref={carouselRef}>
-    //     <CollectionCarousel></CollectionCarousel>
-    //   </div>}
+      {toggle &&
+      <div className={styles.carouselContainer} ref={carouselRef}>
+        <CollectionCarousel></CollectionCarousel>
+      </div>}
 
-    //   {!toggle
+      {!toggle
       
-    //   }
-    // </div>
+      }
+    </div>
   )
 }
 
