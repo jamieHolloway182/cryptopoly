@@ -11,11 +11,15 @@ import styles from '../styles/games/game.module.css'
 
 export default function Game(){
 
-  const [numPerPage, updateNumPerPage] = useState(5);
+  const [numPerPage, updateNumPerPage] = useState(6);
   const [pageNumberSelected, updatePageNumber] = useState(1);
   const [gameListOpen, toggleGameList] = useState(true);
   const [bettingListOpen, toggleBettingList] = useState(false);
   const [gameOpen, toggleGame] = useState(false);
+
+  useEffect(() => {
+    console.log("tri")
+  })
 
   const [rooms, setRoom] = useState([
   {
@@ -81,6 +85,8 @@ export default function Game(){
   const [bot, setBot] = useState("0xbEA90658D8024deeCD2DA095f314168b083FC44f");
   const [player, setPlayer] = useState("0x67A871826d5179C83a6072C7A7b9a4F1BEebF3F5");
 
+  const [gameStarted,updateStart] = useState(false)
+
   const switchPage = (newNum) => {
     const pageNumberSelected = newNum;
     updatePageNumber(pageNumberSelected);
@@ -115,15 +121,13 @@ export default function Game(){
       value: amount
     }).then(() => {
       playerTwoRef.current.innerHTML = "Player Two Connected!";
-      playGame(amount)
     });
+    setAmount(amount)
   }
 
-  const playGame = (amount) => {
-    endGame([house, bot], Math.random() > 0.5 ? 1 : 0, amount)
-  }
-
-  const endGame = async(accounts, winner, amount) => {
+  const endGame = async(winner) => {
+    console.log("yay")
+    let accounts = [house, bot];
     let wei = new BN("100000000000000000")
     let winAmount = (amount / wei) * 2; 
     resultRef.current.innerHTML = (winner == 0 ? "You Won " + winAmount: "You Lost " + (winAmount / 2))  + " MATIC"
@@ -161,7 +165,7 @@ export default function Game(){
       {gameOpen && <div ref={resultRef}></div>}
       {gameOpen && <div ref={playerOneRef}>Player One Connecting...</div>}
       {gameOpen && <div ref={playerTwoRef}>Player Two Connecting...</div>}
-      {gameOpen && <CanvasContainer ></CanvasContainer>}
+      {gameOpen && <CanvasContainer finish={endGame}></CanvasContainer>}
     </div>
   )
 }
