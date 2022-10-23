@@ -66,6 +66,12 @@ export default function Game(){
   },{
     id: nanoid(),
     name: "Chess"
+  },{
+    id: nanoid(),
+    name: "Uno"
+  },{
+    id: nanoid(),
+    name: "Black Jack"
   }])
 
   const [constGames, neverUse] = useState(games);
