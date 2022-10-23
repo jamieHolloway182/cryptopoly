@@ -1,5 +1,6 @@
 import React from 'react'
 import Web3 from 'web3'
+import style from '../../styles/Home.module.css'
 
 const CollectibleCreator = () => {
 
@@ -38,7 +39,12 @@ const CollectibleCreator = () => {
 
     return (
         <div>
-            <button onClick={getContract}></button>
+            <textarea placeholder={"Type in your name..."} className={style.textArea}></textarea>
+            <button onClick={getContract} className={style.button}>Generate Unique Collectable</button>
+            <div>
+                <span className={style.title}>You've won a: </span>
+                <div >Prize</div>
+            </div>
         </div>
     )
 }
