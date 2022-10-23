@@ -8,6 +8,7 @@ import Room from '../components/Room';
 import Web3 from 'web3'
 import BN from 'bn.js'
 import styles from '../styles/games/game.module.css'
+import GameFinishScreen from '../components/Game/GameFinishScreen';
 
 export default function Game(){
 
@@ -16,6 +17,9 @@ export default function Game(){
   const [gameListOpen, toggleGameList] = useState(true);
   const [bettingListOpen, toggleBettingList] = useState(false);
   const [gameOpen, toggleGame] = useState(false);
+  const [gameReady, toggleReady] = useState(false);
+  const [gameFinished, toggleFinish] = useState(false);
+  const [winner, updateWinner] = useState(-1)
 
   useEffect(() => {
     console.log("tri")
@@ -129,21 +133,29 @@ export default function Game(){
       value: amount
     }).then(() => {
       playerTwoRef.current.innerHTML = "Player Two Connected!";
+      toggleReady(true)
     });
     setAmount(amount)
   }
 
-  const endGame = async(winner) => {
-    console.log("yay")
+  const endGame = (winner) => {
+    updateWinner(winner);
+    toggleGame(false);
+    toggleReady(false);
+    toggleFinish(true);
+  }
+
+  const endGameWithMoney = async() => {
     let accounts = [house, bot];
-    let wei = new BN("100000000000000000")
-    let winAmount = (amount / wei) * 2; 
-    resultRef.current.innerHTML = (winner == 0 ? "You Won " + winAmount: "You Lost " + (winAmount / 2))  + " MATIC"
     let returnTransaction = await web3.eth.sendTransaction({
       from: player,
       to: accounts[winner],
       value: (amount * 2)
     })
+  }
+
+  const endGameWithCollectible = () =>{
+
   }
 
   const clickGameList = () => {
@@ -155,6 +167,11 @@ export default function Game(){
     toggleBettingList(false);
     toggleGame(true);
     startGame(amount);
+  }
+
+  const weiToMatic = () => {
+    let wei = new BN("1000000000000000000")
+    return (amount / wei) * 2;
   }
 
   return (
@@ -172,10 +189,10 @@ export default function Game(){
           color={room.color}
           click ={clickBettingList}/>))}
       </div>
-      {gameOpen && <div ref={resultRef}></div>}
       {gameOpen && <div ref={playerOneRef}>Player One Connecting...</div>}
       {gameOpen && <div ref={playerTwoRef}>Player Two Connecting...</div>}
-      {gameOpen && <CanvasContainer finish={endGame}></CanvasContainer>}
+      {gameReady && <CanvasContainer finish={endGame}></CanvasContainer>}
+      {gameFinished && <GameFinishScreen winner={winner} amount={weiToMatic()} onMoney={endGameWithMoney} onCollect={endGameWithCollectible}></GameFinishScreen>}
     </div>
   )
 }
