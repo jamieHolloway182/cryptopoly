@@ -23,10 +23,6 @@ export default function Game(){
   const [winner, updateWinner] = useState(-1);
   const [collectibleOpen, toggleCollectible] = useState(false)
 
-  useEffect(() => {
-    console.log("tri")
-  })
-
   const [rooms, setRoom] = useState([
   {
     id: nanoid(),
