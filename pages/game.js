@@ -185,10 +185,11 @@ export default function Game(){
       </form>}
       {gameListOpen && <GameList click={clickGameList} games={games} pageNum={pageNumberSelected} />}
       {bettingListOpen && <RoomList click = {clickBettingList} rooms={rooms}/>}
-      <div className={styles.connectionContainer}>
+
+      {gameOpen && !gameReady && <div className={styles.connectionContainer}>
         {gameOpen && !gameReady && <div ref={playerOneRef}>Player One Connecting...</div>}
         {gameOpen && !gameReady && <div ref={playerTwoRef}>Player Two Connecting...</div>}
-      </div>
+      </div>}
       {gameReady && <CanvasContainer finish={endGame}></CanvasContainer>}
       {gameFinished && <GameFinishScreen winner={winner} amount={weiToMatic()} onMoney={endGameWithMoney} onCollect={endGameWithCollectible}></GameFinishScreen>}
       {collectibleOpen && <CollectibleCreator></CollectibleCreator>}
