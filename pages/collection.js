@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import CollectionCarousel from "../components/Collection/CollectionCarousel"
 import Web3 from 'web3'
 import styles from '../styles/collection/collection.module.css'
+import CollectibleCreator from "../components/Collection/CollectibleCreator"
 
 const Collection = () => {
 
@@ -34,24 +35,27 @@ const Collection = () => {
     });
   }
 
-  useEffect(() => {
-    //getAccount();
-      carouselRef.current.addEventListener('click', (event) => {
-        updateToggle(false)
-      })
-  }, []);
+  // useEffect(() => {
+  //   //getAccount();
+  //     carouselRef.current.addEventListener('click', (event) => {
+  //       updateToggle(false)
+  //     })
+  // }, []);
 
   return (
     <div>
-      {toggle &&
-      <div className={styles.carouselContainer} ref={carouselRef}>
-        <CollectionCarousel></CollectionCarousel>
-      </div>}
-
-      {!toggle
-      
-      }
+      <CollectibleCreator></CollectibleCreator>
     </div>
+    // <div>
+    //   {toggle &&
+    //   <div className={styles.carouselContainer} ref={carouselRef}>
+    //     <CollectionCarousel></CollectionCarousel>
+    //   </div>}
+
+    //   {!toggle
+      
+    //   }
+    // </div>
   )
 }
 
